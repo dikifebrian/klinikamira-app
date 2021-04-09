@@ -29,11 +29,11 @@
                         </div>
                         <div class="col text-right">
                             @if (auth()->user()->level=="manajer" || auth()->user()->level=="dokter")
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambahrekammedis">
+                            <button type="button" class="btn btn-primary btn-xs mb-1" data-toggle="modal" data-target="#tambahrekammedis">
                                 <i class="fas fa-plus-circle"></i>
                                 Tambah Rekam Medis
                             </button>
-                    @endif
+                            @endif
                         </div>
                     </div>
                 </div>

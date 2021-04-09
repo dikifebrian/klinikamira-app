@@ -23,24 +23,31 @@
             <div class="col-12">
                 <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Data Pasien</h3>
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="card-title">Data Pasien</h3>
+                        </div>
+                        <div class="col text-right">
+                            @if (auth()->user()->level=="manajer" || auth()->user()->level=="kasir")
+                            <button type="button" class="btn btn-primary btn-xs mb-1" data-toggle="modal" data-target="#tambahpasien">
+                                <i class="fas fa-plus-circle"></i>
+                                Tambah Pasien
+                            </button>
+                            @endif
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
-                    @if (auth()->user()->level=="manajer" || auth()->user()->level=="kasir")
-                    <button type="button" class="btn btn-primary btn-sm mb-1" data-toggle="modal" data-target="#tambahpasien">
-                        <i class="fas fa-plus"></i>
-                        Tambah Pasien
-                    </button>
-                    @endif
                     <table id="example1" class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th style="width: 4%">#</th>
+                        <th style="width: 3%">#</th>
+                        <th style="width: 7%" class="text-center">TGL</th>
                         <th style="width: 19%">Nama Pasien</th>
-                        <th style="width: 16%">TTL</th>
+                        <th style="width: 13%">TTL</th>
                         <th style="width: 4%">JK</th>
                         <th style="width: 15%">No KTP</th>
-                        <th style="width: 12%">No HP</th>
+                        <th style="width: 11%">No HP</th>
                         <th >Alamat</th>
                         @if (auth()->user()->level=="manajer" || auth()->user()->level=="kasir")
                         <th style="width: 10%" class="text-center">Aksi</th>
@@ -51,6 +58,7 @@
                     @foreach ($data_pasien as $pasien)
                     <tr>
                         <td>{{$loop->iteration}}</td>
+                        <td class="text-center">{{$pasien->created_at->format('d-m-Y')}}</td>
                         <td>{{$pasien->namapasien}}</td>
                         <td>{{$pasien->ttlpasien}}</td>
                         <td>{{$pasien->jkpasien}}</td>
