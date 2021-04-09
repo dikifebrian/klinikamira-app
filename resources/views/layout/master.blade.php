@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('style/plugins/dropzone/min/dropzone.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('style/dist/css/adminlte.min.css') }}">
-    
+
 </head>
 <body class="accent-olive sidebar-mini">
 <div class="wrapper">
@@ -80,7 +80,7 @@
 <!-- Page specific script -->
 
 <script>
-    
+
     @if (auth()->user()->level=="manajer")
     $(function () {
     $("#example1").DataTable({

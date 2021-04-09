@@ -53,7 +53,7 @@
                     <thead>
                     <tr>
                         <th rowspan="2" style="width: 3%">#</th>
-                        <th rowspan="2"class="text-center">TGL</th>
+                        <th rowspan="2" style="width: 7%" class="text-center">TGL</th>
                         <th rowspan="2" >Nama Pasien</th>
                         <th colspan="4" class="text-center">Keluhan</th>
                         <th colspan="3" class="text-center">Keterangan</th>
@@ -75,7 +75,7 @@
                     @foreach ($data_rekammedis as $rekammedis)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$rekammedis->tglrekammedis->format('d/m/Y')}}</td>
+                        <td class="text-center">{{$rekammedis->created_at->format('d-m-Y')}}</td>
                         <td>{{$rekammedis->pasien->namapasien}}</td>
                         <td>{{$rekammedis->jkrekammedis}}</td>
                         <td>{{$rekammedis->pprekammedis}}</td>
@@ -87,7 +87,7 @@
                         @if (auth()->user()->level=="manajer" || auth()->user()->level=="dokter")
                         <td class="project-actions text-center">
                             <button type="button" class="btn btn-info btn-sm" 
-                                data-remed_id="{{$rekammedis->id}}" data-tglremed="{{$rekammedis->tglrekammedis}}" data-nmpasien="{{$rekammedis->pasien_id}}" data-jkremed="{{$rekammedis->jkrekammedis}}" 
+                                data-remed_id="{{$rekammedis->id}}" data-nmpasien="{{$rekammedis->pasien_id}}" data-jkremed="{{$rekammedis->jkrekammedis}}" 
                                 data-ppremed="{{$rekammedis->pprekammedis}}" data-rpksremed="{{$rekammedis->rpksrekammedis}}" data-psremed="{{$rekammedis->psrekammedis}}" 
                                 data-nmtindakan="{{$rekammedis->tindakan_id}}" data-nmfacial="{{$rekammedis->facial_id}}" data-nmproduk="{{$rekammedis->produk_id}}" data-toggle="modal" data-target="#editrekammedis">
                                 <i class="fas fa-pencil-alt"></i>
@@ -194,7 +194,6 @@
 <script>
     $('#editrekammedis').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
-        var tglrekammedis = button.data('tglremed')
         var pasien_id = button.data('nmpasien')
         var jkrekammedis = button.data('jkremed')
         var pprekammedis = button.data('ppremed')
@@ -206,7 +205,6 @@
         var produk_id = button.data('nmproduk')
 
         var modal=$(this)
-        modal.find('.modal-body #tglrekammedis').val(tglrekammedis);
         modal.find('.modal-body #pasien_id').val(pasien_id);
         modal.find('.modal-body #jkrekammedis').val(jkrekammedis);
         modal.find('.modal-body #pprekammedis').val(pprekammedis);
