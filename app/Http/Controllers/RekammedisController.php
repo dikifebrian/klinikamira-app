@@ -32,12 +32,6 @@ class RekammedisController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function tglprint(Request $request)
-    {
-        $data_rekammedis = Rekammedis::whereDate('created_at', $request->tglprint)->get();
-        return view('rekammedis.index', compact('data_rekammedis'));
-    }
-
     public function create()
     {
         //

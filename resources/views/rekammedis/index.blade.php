@@ -38,17 +38,6 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="tglprint" method="GET">
-                        <div class="form-group row mb-2">
-                            <p class="col-form-label ml-2"> Tanggal :</p>
-                            <div class="col-md-2">
-                                <input type="date" name="tglprint" id="tglprint" class="form-control"/>
-                            </div>
-                            <button type="submit" class="btn btn-secondary btn-sm"  >
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </form>
                     <table id="example1" class="table table-bordered table-striped">
                     <thead>
                     <tr>
