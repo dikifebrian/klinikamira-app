@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class PenggunaController extends Controller
 {
@@ -24,7 +25,7 @@ class PenggunaController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +36,30 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(isset($request->id)) {
+            if(isset($request->password)) {
+                User::where('id', $request->id)->update([
+                    'name' => $request['name'],
+                    'email' => $request['email'],
+                    'level' => $request['level'],
+                    'password' => bcrypt($request['password']),
+                ]);
+            } else {
+                User::where('id', $request->id)->update([
+                    'name' => $request['name'],
+                    'email' => $request['email'],
+                    'level' => $request['level'],
+                ]);
+            }
+        } else {
+            User::create([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'password' => bcrypt($request['password']),
+                'level' => $request['level'],
+            ]);
+        }
+        return redirect('/pengguna');
     }
 
     /**
@@ -46,7 +70,7 @@ class PenggunaController extends Controller
      */
     public function show($id)
     {
-        //
+        return User::find($id);
     }
 
     /**
@@ -80,6 +104,6 @@ class PenggunaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::where('id', $id)->delete();
     }
 }

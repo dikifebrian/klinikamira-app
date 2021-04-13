@@ -1,3 +1,5 @@
+@csrf
+<input type="hidden" name="id" id="id">
 <div class="form-group">
     <h6 for="name">Nama</h6>
     <input name="name" type="text" class="form-control" id="name" placeholder="Masukan Nama Pengguna">
@@ -18,5 +20,9 @@
 </div>
 <div class="form-group">
     <h6 for="password">Password</h6>
-    <input name="password" type="text" class="form-control" id="password" placeholder="Masukan Password Pengguna">
+    <input name="password" type="password" class="form-control" id="password" placeholder="Masukan Password Pengguna">
+</div>
+<div class="form-group">
+    <h6 for="password_confirmation">Konfirmasi Password</h6>
+    <input name="password_confirmation" type="password" class="form-control" id="password_confirmation" placeholder="Masukan Password Pengguna">
 </div>
