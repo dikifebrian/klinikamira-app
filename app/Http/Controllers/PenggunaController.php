@@ -25,7 +25,6 @@ class PenggunaController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -36,8 +35,8 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
-        if(isset($request->id)) {
-            if(isset($request->password)) {
+        if (isset($request->id)) {
+            if (isset($request->password)) {
                 User::where('id', $request->id)->update([
                     'name' => $request['name'],
                     'email' => $request['email'],

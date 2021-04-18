@@ -38,6 +38,14 @@
                     </a>
                 </li>
                 @endif
+                @if (auth()->user()->level=="manajer" || auth()->user()->level=="dokter" || auth()->user()->level=="kasir" || auth()->user()->level=="terapis")
+                <li class="nav-item">
+                    <a href="/rekammedis" class="nav-link {{ request()->is('rekammedis') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-file-alt"></i>
+                    <p>Data Rekam Medis</p>
+                    </a>
+                </li>
+                @endif
                 @if (auth()->user()->level=="manajer" || auth()->user()->level=="dokter" || auth()->user()->level=="kasir")
                 <li class="nav-item {{ request()->is('tindakan', 'facial', 'produk') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link {{ request()->is('tindakan', 'facial', 'produk') ? 'active' : '' }}">
@@ -67,14 +75,6 @@
                         </a>
                     </li>
                     </ul>
-                </li>
-                @endif
-                @if (auth()->user()->level=="manajer" || auth()->user()->level=="dokter" || auth()->user()->level=="kasir" || auth()->user()->level=="terapis")
-                <li class="nav-item">
-                    <a href="/rekammedis" class="nav-link {{ request()->is('rekammedis') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-file-alt"></i>
-                    <p>Data Rekam Medis</p>
-                    </a>
                 </li>
                 @endif
                 <li class="nav-header">SETTING</li>

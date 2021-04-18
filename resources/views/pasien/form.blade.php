@@ -10,6 +10,7 @@
     <div class="form-group">
         <h6 for="jkpasien">Jenis Kelamin</h6>
         <select name="jkpasien" class="form-control" id="jkpasien">
+            <option disabled selected>Masukan Jenis Kelamin</option>
             <option value="L">Laki-Laki</option>
             <option value="P">Perempuan</option>
         </select>
