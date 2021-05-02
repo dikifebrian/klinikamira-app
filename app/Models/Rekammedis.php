@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Rekammedis extends Model
 {
     protected $table = 'rekammedis';
-    protected $fillable = ['jkrekammedis', 'pprekammedis', 'rpksrekammedis', 'psrekammedis', 'pasien_id', 'tindakan_id', 'facial_id', 'produk_id'];
+    protected $fillable = ['jkrekammedis', 'pprekammedis', 'rpksrekammedis', 'psrekammedis', 'pasien_id', 'tindakan_id', 'facial_id', 'prdkrekammedis'];
 
     public function pasien()
     {
@@ -23,10 +23,5 @@ class Rekammedis extends Model
     public function facial()
     {
         return $this->belongsTo(Facial::class);
-    }
-
-    public function produk()
-    {
-        return $this->belongsTo(Produk::class);
     }
 }

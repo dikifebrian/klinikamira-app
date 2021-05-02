@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produk;
 use App\Models\Facial;
 use App\Models\Tindakan;
 use App\Models\Pasien;
@@ -22,8 +21,7 @@ class RekammedisController extends Controller
         $psn = \App\Models\Pasien::all();
         $tndkn = \App\Models\Tindakan::all();
         $fcl = \App\Models\Facial::all();
-        $prdk = \App\Models\Produk::all();
-        return view('rekammedis.index', ['data_rekammedis' => $data_rekammedis], compact('psn', 'tndkn', 'fcl', 'prdk'));
+        return view('rekammedis.index', ['data_rekammedis' => $data_rekammedis], compact('psn', 'tndkn', 'fcl'));
     }
 
     /**

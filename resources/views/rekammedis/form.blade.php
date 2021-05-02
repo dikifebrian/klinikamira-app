@@ -54,13 +54,8 @@
             </select>
         </div>
         <div class="col-md-4 mb-3">
-            <h6 for="produk_id">Produk</h6>
-            <select name="produk_id" type="text" class="form-control" id="produk_id">
-                <option disabled selected>Pilih Produk</option>
-                @foreach ($prdk as $item)
-                <option value="{{$item->id}}">{{$item->namaproduk}}</option>
-                @endforeach
-            </select>
+            <h6 for="prdkrekammedis">Produk</h6>
+            <textarea name="prdkrekammedis" class="form-control" rows="1" id="prdkrekammedis"></textarea>
         </div>
     </div>
 </div>

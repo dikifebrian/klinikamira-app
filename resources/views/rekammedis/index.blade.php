@@ -52,12 +52,12 @@
                     </tr>
                     <tr>
                         <th style="width: 10%">Jenis Kulit</th>
-                        <th style="width: 10%">Pori-Pori</th>
+                        <th style="width: 9%">Pori-Pori</th>
                         <th style="width: 8%">RPKS</th>
                         <th>Problem Sekarang</th>
                         <th style="width: 9%">Tindakan</th>
                         <th style="width: 9%">Facial</th>
-                        <th style="width: 9%">Produk</th>
+                        <th style="width: 12%">Produk</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -72,13 +72,13 @@
                         <td>{{$rekammedis->psrekammedis}}</td>
                         <td>{{ isset($rekammedis->tindakan->namatindakan) ? $rekammedis->tindakan->namatindakan : '-'}}</td>
                         <td>{{ isset($rekammedis->facial->namafacial) ? $rekammedis->facial->namafacial : '-'}}</td>
-                        <td>{{$rekammedis->produk->namaproduk}}</td>
+                        <td>{{$rekammedis->prdkrekammedis}}</td>
                         @if (auth()->user()->level=="manajer" || auth()->user()->level=="dokter")
                         <td class="project-actions text-center">
                             <button type="button" class="btn btn-info btn-sm" 
                                 data-remed_id="{{$rekammedis->id}}" data-nmpasien="{{$rekammedis->pasien_id}}" data-jkremed="{{$rekammedis->jkrekammedis}}" 
                                 data-ppremed="{{$rekammedis->pprekammedis}}" data-rpksremed="{{$rekammedis->rpksrekammedis}}" data-psremed="{{$rekammedis->psrekammedis}}" 
-                                data-nmtindakan="{{$rekammedis->tindakan_id}}" data-nmfacial="{{$rekammedis->facial_id}}" data-nmproduk="{{$rekammedis->produk_id}}" data-toggle="modal" data-target="#editrekammedis">
+                                data-nmtindakan="{{$rekammedis->tindakan_id}}" data-nmfacial="{{$rekammedis->facial_id}}" data-prdkremed="{{$rekammedis->prdkrekammedis}}" data-toggle="modal" data-target="#editrekammedis">
                                 <i class="fas fa-pencil-alt"></i>
                             </button>
                             :
@@ -191,7 +191,7 @@
         var remed_id = button.data('remed_id')
         var tindakan_id = button.data('nmtindakan')
         var facial_id = button.data('nmfacial')
-        var produk_id = button.data('nmproduk')
+        var prdkrekammedis = button.data('prdkremed')
 
         var modal=$(this)
         modal.find('.modal-body #pasien_id').val(pasien_id);
@@ -202,7 +202,7 @@
         modal.find('.modal-body #remed_id').val(remed_id);
         modal.find('.modal-body #tindakan_id').val(tindakan_id);
         modal.find('.modal-body #facial_id').val(facial_id);
-        modal.find('.modal-body #produk_id').val(produk_id);
+        modal.find('.modal-body #prdkrekammedis').val(prdkrekammedis);
     })
 
     $('#hapusrekammedis').on('show.bs.modal', function(event) {
