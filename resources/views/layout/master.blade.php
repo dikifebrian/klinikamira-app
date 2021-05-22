@@ -98,6 +98,20 @@
     });
     @endif
 
+    @if (auth()->user()->level=="kasir" || auth()->user()->level=="dokter")
+    $(function () {
+    $("#example1").DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": false,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+    @endif
+
     $(function() {
     var Toast = Swal.mixin({
         toast: true,
