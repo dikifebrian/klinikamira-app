@@ -93,7 +93,7 @@
         "info": true,
         "autoWidth": false,
         "responsive": true,
-        "buttons": ["csv", "excel", "pdf", "colvis"]
+        "buttons": ["print", "excel", "pdf", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
     @endif
