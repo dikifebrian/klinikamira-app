@@ -38,6 +38,15 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <div class="col mb-1">
+                        <tr>
+                            <td> Dari</td>
+                            <td><input type="date" name="dari_tgl" required="required"></td>
+                            <td> Sampai </td>
+                            <td><input type="date" name="sampai_tgl" required="required"></td>
+                            <td><input type="submit" class="btn btn-success btn-sm" name="tampilkan" value="Tampilkan"></td>
+                        </tr>
+                    </div>
                     <table id="example1" class="table table-bordered table-striped">
                     <thead>
                     <tr>
