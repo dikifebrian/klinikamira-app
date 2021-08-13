@@ -29,4 +29,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:manajer,dokter,kasir,terapis']]
     Route::resource('/rekammedis', '\App\Http\Controllers\RekammedisController');
     Route::resource('/pengguna', '\App\Http\Controllers\PenggunaController');
     Route::get('/tglprint', '\App\Http\Controllers\RekammedisController@tglprint');
+
+    Route::post('/pasien-filter', '\App\Http\Controllers\PasienFilter');
+    Route::post('/rekammedis-filter', '\App\Http\Controllers\RekamMedisFilter');
 });
