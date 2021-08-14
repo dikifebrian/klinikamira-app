@@ -38,6 +38,7 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    @if (auth()->user()->level=="manajer")
                     <div class="col mb-1">
                         <form action="/pasien-filter" method="post">
                             @csrf
@@ -50,6 +51,7 @@
                             </tr>
                         </form>
                     </div>
+                    @endif
                     <table id="example1" class="table table-bordered table-striped">
                     <thead>
                     <tr>

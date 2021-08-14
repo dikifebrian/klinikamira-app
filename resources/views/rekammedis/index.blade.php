@@ -38,6 +38,20 @@
                     </div>
                 </div>
                 <div class="card-body">
+                     @if (auth()->user()->level=="manajer")
+                    <div class="col mb-1">
+                        <form action="/rekammedis-filter" method="post">
+                            @csrf
+                            <tr>
+                                <td> Dari</td>
+                                <td><input type="date" name="dari_tgl" required="required" value="{{isset($start_date) ? $start_date : ''}}"></td>
+                                <td> Sampai </td>
+                                <td><input type="date" name="sampai_tgl" required="required" value="{{isset($end_date) ? $end_date : ''}}"></td>
+                                <td><input type="submit" class="btn btn-success btn-sm" value="Tampilkan"></td>
+                            </tr>
+                        </form>
+                    </div>
+                    @endif
                     <table id="example1" class="table table-bordered table-striped">
                     <thead>
                     <tr>
