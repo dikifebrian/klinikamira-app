@@ -60,8 +60,10 @@
                                         <th rowspan="2">Nama Pasien</th>
                                         <th colspan="4" class="text-center">Keluhan</th>
                                         <th colspan="3" class="text-center">Keterangan</th>
-                                        @if (auth()->user()->level=="manajer" || auth()->user()->level=="dokter")
+                                        @if (auth()->user()->level=="manajer" || auth()->user()->level=="dokter" || auth()->user()->level=="terapis")
                                         <th rowspan="2" style="width: 7%" class="text-center">Status Perawatan</th>
+                                        @endif
+                                        @if (auth()->user()->level=="manajer" || auth()->user()->level=="dokter")
                                         <th rowspan="2" style="width: 10%" class="text-center">Aksi</th>
                                         @endif
                                     </tr>
@@ -88,7 +90,7 @@
                                         <td>{{ isset($rekammedis->tindakan->namatindakan) ? $rekammedis->tindakan->namatindakan : '-'}}</td>
                                         <td>{{ isset($rekammedis->facial->namafacial) ? $rekammedis->facial->namafacial : '-'}}</td>
                                         <td>{{$rekammedis->prdkrekammedis}}</td>
-                                        @if (auth()->user()->level=="manajer" || auth()->user()->level=="dokter")
+                                        @if (auth()->user()->level=="manajer" || auth()->user()->level=="dokter" || auth()->user()->level=="terapis")
                                         <td class="project-actions text-center">
                                             @if ($rekammedis->statusperawatan)
                                             <button class="btn btn-sm btn-success">
@@ -101,6 +103,7 @@
                                             @endif
                                         </td>
                                         @endif
+                                        @if (auth()->user()->level=="manajer" || auth()->user()->level=="dokter")
                                         @if (!$rekammedis->statusperawatan)
                                         <td class="project-actions text-center">
                                             <button type="button" class="btn btn-info btn-sm" data-remed_id="{{$rekammedis->id}}" data-nmpasien="{{$rekammedis->pasien_id}}" data-jkremed="{{$rekammedis->jkrekammedis}}" data-ppremed="{{$rekammedis->pprekammedis}}" data-rpksremed="{{$rekammedis->rpksrekammedis}}" data-psremed="{{$rekammedis->psrekammedis}}" data-nmtindakan="{{$rekammedis->tindakan_id}}" data-nmfacial="{{$rekammedis->facial_id}}" data-prdkremed="{{$rekammedis->prdkrekammedis}}" data-toggle="modal" data-target="#editrekammedis">
@@ -113,6 +116,7 @@
                                         </td>
                                         @else
                                         <td class="text-center">-</td>
+                                        @endif
                                         @endif
                                     </tr>
                                     @endforeach
