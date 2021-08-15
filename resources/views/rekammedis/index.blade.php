@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                     @if (auth()->user()->level=="manajer")
+                    @if (auth()->user()->level=="manajer")
                     <div class="col mb-1">
                         <form action="/rekammedis-filter" method="post">
                             @csrf
@@ -61,6 +61,7 @@
                         <th colspan="4" class="text-center">Keluhan</th>
                         <th colspan="3" class="text-center">Keterangan</th>
                         @if (auth()->user()->level=="manajer" || auth()->user()->level=="dokter")
+                        <th rowspan="2" style="width: 7%" class="text-center">Status Perawatan</th>
                         <th rowspan="2" style="width: 10%" class="text-center">Aksi</th>
                         @endif
                     </tr>
@@ -89,6 +90,15 @@
                         <td>{{$rekammedis->prdkrekammedis}}</td>
                         @if (auth()->user()->level=="manajer" || auth()->user()->level=="dokter")
                         <td class="project-actions text-center">
+                            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#status">
+                                @if ($rekammedis->statusperawatan) 
+                                Sudah
+                                @else 
+                                Belum
+                                @endif 
+                            </button>
+                        </td>
+                        <td class="project-actions text-center">
                             <button type="button" class="btn btn-info btn-sm" 
                                 data-remed_id="{{$rekammedis->id}}" data-nmpasien="{{$rekammedis->pasien_id}}" data-jkremed="{{$rekammedis->jkrekammedis}}" 
                                 data-ppremed="{{$rekammedis->pprekammedis}}" data-rpksremed="{{$rekammedis->rpksrekammedis}}" data-psremed="{{$rekammedis->psrekammedis}}" 
@@ -113,7 +123,7 @@
     </section>
 </div>
 
-{{-- Modah  Tambah --}}
+{{-- Modal  Tambah --}}
 <div class="modal fade" id="tambahrekammedis">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -136,9 +146,9 @@
         </div>
     </div>
 </div>
-{{-- Modah  Tambah --}}
+{{-- Modal  Tambah --}}
 
-{{-- Modah  Edit --}}
+{{-- Modal  Edit --}}
 <div class="modal fade" id="editrekammedis">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -163,9 +173,9 @@
         </div>
     </div>
 </div>
-{{-- Modah  Edit --}}
+{{-- Modal  Edit --}}
 
-{{-- Modah  Hapus --}}
+{{-- Modal  Hapus --}}
 <div class="modal fade" id="hapusrekammedis">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -190,7 +200,34 @@
         </div>
     </div>
 </div>
-{{-- Modah  Hapus --}}
+{{-- Modal Hapus --}}
+
+{{-- Modal  Status --}}
+<div class="modal fade" id="status">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Konfirmasi Status Perawatan</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{route('rekammedis.destroy','test')}}" method="POST">
+            {{ method_field('delete') }}
+            {{ csrf_field() }}
+            <div class="modal-body">
+                <input type="hidden" name="rekammedis_id" id="remed_id" value="">
+                <h6>Perawatan Sudah Dilakukan?</h6>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
+                <button type="submit" class="btn btn-success">Ya, Sudah</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{-- Modal  Status --}}
 @endsection
 
 @push('scripts')
