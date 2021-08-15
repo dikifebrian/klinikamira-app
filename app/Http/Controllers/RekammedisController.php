@@ -119,4 +119,9 @@ class RekammedisController extends Controller
 
         return back();
     }
+
+    public function updateStatus(Request $request) {
+        Rekammedis::where('id', $request->rekammedis_id)->update(['statusperawatan' => !$request->rekammedis_status]);
+        return back();
+    }
 }

@@ -32,4 +32,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:manajer,dokter,kasir,terapis']]
 
     Route::post('/pasien-filter', '\App\Http\Controllers\PasienFilter');
     Route::post('/rekammedis-filter', '\App\Http\Controllers\RekamMedisFilter');
+
+    Route::put('/rekammedis-status', '\App\Http\Controllers\RekammedisController@updateStatus')->name('rekammedis.put');
 });
